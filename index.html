@@ -212,12 +212,12 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @media(hover:hover){.marks li:hover{padding-left:8px}}
 .marks .mk{width:112px;height:112px;border-radius:18px;background:#fff;display:grid;place-items:center;padding:16px;position:relative}
 @media(min-width:1000px){.marks li{grid-template-columns:150px 1fr auto;gap:28px}.marks .mk{width:150px;height:150px;border-radius:22px;padding:22px}}
-.marks .mk svg{width:100%;height:100%;transition:opacity .5s var(--ease)}
-.marks .mk .ctx{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:16px;opacity:0;transition:opacity .5s var(--ease)}
-.marks li.on .mk .ctx{opacity:1}
-.marks li.on .mk svg,.marks li.on .mk .tag-sample{opacity:0}
-@media(hover:hover){.marks li:hover .mk .ctx{opacity:1}.marks li:hover .mk svg,.marks li:hover .mk .tag-sample{opacity:0}}
-.marks .mk .tag-sample{top:auto;bottom:-8px;left:50%;transform:translateX(-50%);font-size:8px;padding:2px 6px}
+.marks .mk svg{width:100%;height:100%;opacity:0;transition:opacity .5s var(--ease)}
+.marks .mk .ctx{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:16px;opacity:1;transition:opacity .5s var(--ease)}
+.marks li.on .mk .ctx{opacity:0}
+.marks li.on .mk svg,.marks li.on .mk .tag-sample{opacity:1}
+@media(hover:hover){.marks li:hover .mk .ctx{opacity:0}.marks li:hover .mk svg,.marks li:hover .mk .tag-sample{opacity:1}}
+.marks .mk .tag-sample{top:auto;bottom:-8px;left:50%;transform:translateX(-50%);font-size:8px;padding:2px 6px;opacity:0;transition:opacity .5s var(--ease)}
 .marks .ep{display:inline-block;padding:8px 0;margin:-8px 0;font-family:var(--font-en);font-size:11px;letter-spacing:.18em;font-weight:700;color:rgba(255,255,255,.55)}
 .marks .ep:hover{color:#fff}
 .marks h3{font-size:clamp(18px,1.8vw,24px);font-weight:700;letter-spacing:-.02em;margin:4px 0 4px}
@@ -389,10 +389,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <div>
         <span class="eyebrow rv">Brand Design Agency · Since 1999</span>
         <h1 class="h-display rv rv-d1">
-          <span class="line">브랜드를 진단하고</span>
+          <span class="line">브랜드를 설계하고</span>
           <span class="line">다시 <span class="accent">태어나게.</span></span>
         </h1>
-        <p class="lead rv rv-d2">G마크, 홈택스, K-MILK. 국민이 매일 마주치는 마크를 만든 로고 제작 전문 회사입니다.<br>공공기관부터 스타트업까지, 로고 제작을 넘어 브랜드가 읽히는 방식을 다시 설계합니다.</p>
+        <p class="lead rv rv-d2">G마크, 홈택스, K-MILK. 국민이 매일 마주치는 마크를 만든 브랜딩 전문 회사입니다.<br>공공기관부터 스타트업까지, 로고 제작을 넘어 브랜드가 읽히는 방식을 다시 설계합니다.</p>
         <div class="hero-cta rv rv-d3">
           <a class="btn btn-red" href="#consult">무료 브랜드 진단 받기 <span class="arr">→</span></a>
           <a class="btn btn-ghost" href="#before-after">비포·애프터 보기</a>
@@ -410,7 +410,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <div class="hero-stats rv rv-d4">
       <div class="stat"><b>1999</b><span>창립 · 27년 업력</span></div>
       <div class="stat"><b><span class="n" data-count="2893">0</span><sup>+</sup></b><span>누적 프로젝트</span></div>
-      <div class="stat"><b>인증마크</b><span>G마크·홈택스·K-MILK</span></div>
+      <div class="stat"><b>상표등록</b><span>성공 980건</span></div>
     </div>
   </div>
 </section>
@@ -447,12 +447,14 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       </div>
       <div>
         <span class="eyebrow rv">Brand Diagnosis</span>
-        <h2 class="h2 rv rv-d1" style="margin-top:18px">로고 하나 바꾸는 게<br>아닙니다.</h2>
-        <p class="lead rv rv-d2" style="margin-top:18px">로고를 그리기 전에, 브랜드부터 진단합니다. 아래 세 가지 중 하나라도 해당된다면, 지금 시장에서 브랜드가 읽히지 않고 있다는 신호입니다.</p>
+        <h2 class="h2 rv rv-d1" style="margin-top:18px">지금, 귀사의<br>브랜드는 어떠신가요?</h2>
+        <p class="lead rv rv-d2" style="margin-top:18px">아래 항목 중 하나라도 해당된다면, 지금 시장에서 귀사의 브랜드가 제대로 읽히지 않고 있다는 신호입니다.</p>
         <ol class="checklist rv rv-d2">
-          <li><span class="no">01</span><div><h3>무료 폰트로 상호명만 적은 로고</h3><p>어떤 업종인지, 어떤 가치를 주는지 전달되지 않습니다. 명함에 넣어도 기억에 남지 않습니다.</p></div></li>
-          <li><span class="no">02</span><div><h3>매체마다 다른 색</h3><p>홈페이지는 파랑, 명함은 검정, SNS는 빨강. 제각각인 색이 브랜드 신뢰도를 조각냅니다.</p></div></li>
-          <li><span class="no">03</span><div><h3>경쟁사와 구분되지 않는 마크</h3><p>같은 업종에 비슷한 로고가 넘칩니다. 결국 가격 말고는 선택 기준이 사라집니다.</p></div></li>
+          <li><span class="no">01</span><div><h3>상표등록 불가능한 위험한 로고</h3><p>흔한 스톡 이미지나 기성 폰트로 만든 로고는 상표 출원이 거절될 수 있습니다. 사업이 성장한 뒤 간판과 마케팅 비용을 모두 날리고 이름을 바꿔야 하는 치명적 리스크를 초래합니다.</p></div></li>
+          <li><span class="no">02</span><div><h3>실력보다 저평가되는 브랜드 이미지</h3><p>뛰어난 제품과 서비스를 갖추고도 세련되지 못한 로고 하나 때문에 저가 업체로 오인받습니다.</p></div></li>
+          <li><span class="no">03</span><div><h3>매체마다 제각각인 색상과 폰트</h3><p>홈페이지는 파랑, 명함은 검정, SNS는 빨강. 일관성 없이 제각각 적용되는 디자인이 브랜드의 신뢰도를 조각냅니다.</p></div></li>
+          <li><span class="no">04</span><div><h3>경쟁사와 구분되지 않는 흔한 마크</h3><p>동종 업계에 비슷한 로고가 넘쳐납니다. 차별성이 없으면 결국 고객에게 &#39;가격 할인&#39; 말고는 선택 받을 기준이 사라집니다.</p></div></li>
+          <li><span class="no">05</span><div><h3>무료 폰트로 상호명만 적은 로고</h3><p>어떤 업종인지, 어떤 가치를 전달하는지 전혀 읽히지 않습니다. 명함에 넣어도 고객의 기억에 아무런 잔상을 남기지 못합니다.</p></div></li>
         </ol>
         <div class="diag-note rv rv-d3">
           <a class="btn btn-ghost" href="#consult">내 브랜드 진단받기 <span class="arr">→</span></a>
@@ -532,8 +534,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <figure class="rv rv-d1"><img src="assets/cards.webp" alt="브랜드 마크가 적용된 명함" loading="lazy"><figcaption>명함 · 인쇄물</figcaption></figure>
       <div class="system-copy rv rv-d2">
         <span class="eyebrow">Brand System</span>
-        <h3>로고 제작은 시작일 뿐입니다.</h3>
-        <p>메인·서브·강조 컬러를 정의하고 간판, 명함, 패키지, 온라인까지 모든 접점에 적용합니다. 온·오프라인 어디서 만나도 한 회사로 기억되는 브랜드로 다시 태어납니다.</p>
+        <h3>로고에 브랜드시스템을<br>더합니다.</h3>
+        <p>모든 접점에서 기억되는 하나의 브랜드 경험<br>명함, 패키지, 간판부터 웹사이트와 SNS까지. 단순한 로고에 그치지 않고, 고객이 마주치는 모든 접점에서 완벽한 브랜드 가이드를 구축합니다.</p>
       </div>
       <figure class="rv rv-d2"><img src="assets/packaging.webp" alt="브랜드 마크가 적용된 패키지" loading="lazy"><figcaption>패키지 · 쇼핑백</figcaption></figure>
       <figure class="rv rv-d3"><img src="assets/ind_retail.webp" alt="브랜드 마크가 적용된 제품 라인" loading="lazy"><figcaption>제품 · 라벨</figcaption></figure>
@@ -547,7 +549,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <div class="sec-head">
       <div>
         <span class="eyebrow rv">Public Sector</span>
-        <h2 class="h2 rv rv-d1" style="margin-top:16px">로고뱅크는 몰라도,<br>이 마크는 압니다.</h2>
+        <h2 class="h2 rv rv-d1" style="margin-top:16px">국민이 매일 마주치는<br>마크를 만든 회사</h2>
       </div>
       <p class="lead rv rv-d2">세금을 낼 때, 우유를 고를 때, 농산물을 살 때. 이미 만나고 계십니다. 정부기관, 협회, 지자체의 공공기관 로고와 인증마크 디자인. 신뢰·공익성·상징성이라는 세 가지 요건으로 설계해 왔습니다.</p>
     </div>
@@ -568,8 +570,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         </li>
         <li>
           <div class="mk"><svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#ph-hometax"/></svg><img class="ctx" src="assets/ctx_phone.jpg" alt="" loading="lazy"><span class="tag-sample">SAMPLE</span></div>
-          <div><a class="ep" href="#shorts">HOMETAX · EP.02 ↗</a><h3>국세청 홈택스</h3><p>대국민 공모전 채택작. 소문자 e와 녹색 닷으로 빠르고 편리한 온라인 납세를 표현했습니다.</p></div>
-          <span class="badge">공모전 당선</span>
+          <div><a class="ep" href="#shorts">HOMETAX · EP.02 ↗</a><h3>국세청 홈택스</h3><p>전 국민 누구나가 집에서 쉽게 이용할 수 있는 정책브랜드. 소문자 e와 녹색닷으로 빠르고 편리한 온라인 납세를 표현했습니다.</p></div>
+          <span class="badge">정책브랜드</span>
         </li>
         <li>
           <div class="mk"><svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><use href="#ph-kmilk"/></svg><img class="ctx" src="assets/ctx_milk.jpg" alt="" loading="lazy"><span class="tag-sample">SAMPLE</span></div>
@@ -589,8 +591,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <div class="monument rv">
       <img src="assets/monument.webp" alt="공공기관 로비의 인증마크 조형물" loading="lazy">
       <div class="txt">
-        <h3>공공 브랜드는 한 번 만들면 수십 년을 갑니다.</h3>
-        <p>그래서 더 엄격하게 진단하고, 더 오래 남을 형태로 설계합니다.</p>
+        <h3>국민의 공감과 신뢰를 얻는<br>공공브랜드를 만듭니다.</h3>
+        <p>한 번 개발되면 쉽게 바꿀 수 없습니다. 오랜기간 수많은 국민과 마주하기에. 그래서 더 엄격하게 진단하고, 더 오래 남을 형태와 시스템으로 개발합니다.</p>
       </div>
     </div>
   </div>
@@ -602,7 +604,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <div class="sec-head">
       <div>
         <span class="eyebrow rv">SME · Startup</span>
-        <h2 class="h2 rv rv-d1" style="margin-top:16px">작은 회사일수록,<br>로고가 먼저 일합니다.</h2>
+        <h2 class="h2 rv rv-d1" style="margin-top:16px">업종이 다르면<br>브랜드 설계부터 달라야 합니다.</h2>
       </div>
       <p class="lead rv rv-d2">공공 브랜드만큼 엄격하게, 스타트업의 속도로. 업종, 예산, 단계에 맞는 범위를 제안하고 1:1 전담 디자이너가 처음부터 끝까지 함께합니다. 업종을 누르면 상담 폼에 바로 반영됩니다.</p>
     </div>
@@ -615,7 +617,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <a class="ind rv rv-d4" href="#consult" data-ind="제조 · B2B"><img src="assets/ind_mfg.webp" alt="" loading="lazy"><div class="ov"></div><div class="txt"><span class="en">Manufacturing</span><h3>B2B 기업<br>CI 리뉴얼</h3><div class="chips"><span>카탈로그</span><span>전시</span><span>차량</span></div></div></a>
       <a class="ind rv rv-d4" href="#consult" data-ind="문화 · 예술"><img src="assets/ind_culture.webp" alt="" loading="lazy"><div class="ov"></div><div class="txt"><span class="en">Culture</span><h3>문화재단 · 예술기관<br>BI</h3><div class="chips"><span>포스터</span><span>배너</span><span>사이니지</span></div></div></a>
       <a class="ind rv rv-d4" href="#consult" data-ind="교육"><img src="assets/ind_edu.webp" alt="" loading="lazy"><div class="ov"></div><div class="txt"><span class="en">Education</span><h3>교육기관<br>브랜드 개발</h3><div class="chips"><span>엠블럼</span><span>유니폼</span><span>안내물</span></div></div></a>
-      <a class="ind cta rv rv-d4" href="#consult"><div><span class="en">And more</span><h3>그 외<br>전 업종<br>상담 가능</h3></div><span class="go">→</span></a>
+      <a class="ind cta rv rv-d4" href="works.html"><div><span class="en">And more</span><h3>더 많은<br>실적 보러가기</h3></div><span class="go">→</span></a>
     </div>
 
     <div class="scope rv" aria-label="작업 범위">
@@ -664,7 +666,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   <div class="wrap">
     <div>
       <span class="bi-logo rv"><i></i> Brand Intuition</span>
-      <h2 class="h2 rv rv-d1" style="margin-top:18px">로고 너머,<br>브랜드 전략이 필요하다면.</h2>
+      <h2 class="h2 rv rv-d1" style="margin-top:18px">Beyond Logo.<br>브랜드전략이 필요하다면.</h2>
       <p class="lead rv rv-d2" style="margin-top:18px">로고뱅크를 운영하는 법인 브랜드인투션은 공공기관과 기업의 브랜드 전략을 수립하고, 네이밍 체계와 브랜드 아키텍처를 설계합니다. 마크가 아니라 방향이 문제라면, 여기서 시작합니다.</p>
     </div>
     <div class="rv rv-d2">
@@ -684,7 +686,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <div class="consult-grid">
       <div class="consult-info">
         <span class="eyebrow rv">Brand Consultation</span>
-        <h2 class="h2 rv rv-d1" style="margin-top:16px">지금의 로고, 괜찮은지<br>먼저 봐드립니다.</h2>
+        <h2 class="h2 rv rv-d1" style="margin-top:16px">지금 사용중인 로고,<br>전문가에게 먼저<br>확인해보세요.</h2>
         <p class="lead rv rv-d2" style="margin-top:18px">지금 쓰는 로고 파일 하나면 됩니다. 문제점부터 파악하고, 방향을 함께 잡아드립니다.</p>
         <dl class="rv rv-d2">
           <dt>응답</dt><dd>평균 24시간 이내</dd>
@@ -715,7 +717,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
           <div class="field"><label for="f-file">현재 로고 파일 (선택 · 없어도 괜찮습니다)</label><label class="drop" for="f-file"><input id="f-file" name="logo" type="file" accept="image/*,.pdf,.ai,.svg"><span>파일을 끌어다 놓거나 클릭해서 첨부</span><small>JPG · PNG · PDF · AI · SVG</small></label></div>
         </div>
         <label class="agree"><input type="checkbox" name="agree" required><span>개인정보 수집·이용에 동의합니다. 수집된 정보는 상담 목적으로만 사용되며 제3자에게 제공되지 않습니다. <a href="privacy.html" target="_blank" rel="noopener" style="text-decoration:underline">개인정보처리방침</a></span></label>
-        <button class="btn btn-red" type="submit">브랜드 진단 신청하기 <span class="arr">→</span></button>
+        <button class="btn btn-red" type="submit">브랜드진단 및 상담 신청 <span class="arr">→</span></button>
       </form>
     </div>
   </div>

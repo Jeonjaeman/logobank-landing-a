@@ -128,6 +128,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .stat b .n{font:inherit}
 .hero-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.25);max-width:420px;justify-self:end;width:100%}
 .hero-card .cap{font-family:var(--font-en);font-size:11px;letter-spacing:.18em;font-weight:700;color:var(--mute);display:flex;justify-content:space-between;margin-bottom:12px}
+.hero-card .cap .ko{font-family:var(--font-kr,inherit);letter-spacing:.02em;color:var(--ink)}
 .hero-card .cap i{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block}
 .hero-card .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .hero-card .pair figure{border-radius:10px;overflow:hidden;border:1px solid var(--line);position:relative}
@@ -192,6 +193,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .ba-body .result{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:baseline}
 .ba-body .result b{font-family:var(--font-en);font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--ink)}
 .ba-body .result span{font-size:13px;color:var(--ink2)}
+#brand-system .system{margin-top:0}
 .system{margin-top:clamp(64px,8vw,110px);display:grid;grid-template-columns:1fr;gap:16px}
 @media(min-width:900px){.system{grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:auto auto;gap:18px}
 .system .big{grid-row:span 2}}
@@ -207,11 +209,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 /* ============ PUBLIC (DARK #1) ============ */
 .public{position:relative;overflow:hidden}
 .public-grid{display:grid;grid-template-columns:1fr;gap:40px}
-@media(min-width:1000px){.public-grid{grid-template-columns:1fr 1.15fr;gap:64px;align-items:center}}
-.public-video{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/10;background:#000}
-.public-video video,.public-video img{width:100%;height:100%;object-fit:cover}
-.public-video .cap{position:absolute;left:16px;bottom:14px;font-family:var(--font-en);font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.7)}
 .marks{list-style:none;display:grid;gap:0;border-top:1px solid rgba(255,255,255,.14)}
+@media(min-width:900px){.marks{grid-template-columns:1fr 1fr;column-gap:56px}}
 .marks li{display:grid;grid-template-columns:112px 1fr auto;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14);transition:padding .4s var(--ease)}
 @media(max-width:640px){.marks li{grid-template-columns:96px 1fr;gap:16px}.marks .mk{width:96px;height:96px}.marks .badge{grid-column:2;justify-self:start;margin-top:-6px}}
 @media(hover:hover){.marks li:hover{padding-left:8px}}
@@ -274,7 +273,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 
 /* ============ SHORTS ============ */
 .shorts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(min-width:900px){.shorts-grid{grid-template-columns:repeat(4,1fr);gap:18px}}
+@media(min-width:900px){.shorts-grid{grid-template-columns:repeat(4,1fr);gap:12px;max-width:600px}.short.soon{padding:16px}.short.soon .in h3{font-size:15px}.short.soon .go{font-size:28px}.short .t{padding:40px 10px 10px}.short .t h3{font-size:13px}.short .t p{font-size:11px}.short .play{width:40px;height:40px}}
 .short{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#0D0D0D;color:#fff;display:block}
 .short img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 @media(hover:hover){.short:hover img{transform:scale(1.05)}}
@@ -292,7 +291,12 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .short.soon .in h3{font-size:clamp(17px,1.6vw,24px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:10px}
 .short.soon .go{font-family:var(--font-en);font-weight:800;font-size:40px;line-height:1;align-self:flex-end;transition:transform .35s var(--ease)}
 @media(hover:hover){.short.soon:hover .go{transform:translateX(6px)}}
-.social{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.social{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:36px}
+@media(min-width:900px){.social{grid-template-columns:repeat(4,1fr);gap:16px}}
+.sns{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:30px 16px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
+.sns svg{width:56px;height:auto}.sns img{height:26px;width:auto}
+.sns span{font-family:var(--font-en);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--ink2)}
+@media(hover:hover){.sns:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(0,0,0,.35);border-color:var(--ink)}}
 
 /* ============ BRAND INTUITION (DARK #2) ============ */
 .bi{position:relative;overflow:hidden;padding:clamp(72px,9vw,120px) 0}
@@ -382,22 +386,22 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <div>
         <span class="eyebrow rv">Brand Design Agency · Since 1999</span>
         <h1 class="h-display rv rv-d1">
-          <span class="line">브랜드를 설계하고</span>
+          <span class="line">브랜드를 진단하고</span>
           <span class="line">다시 <span class="accent">태어나게.</span></span>
         </h1>
-        <p class="lead rv rv-d2">G마크, 홈택스, K-MILK. 국민이 매일 마주치는 마크를 만든 브랜딩 전문 회사입니다.<br>공공기관부터 스타트업까지, 로고 제작을 넘어 브랜드가 읽히는 방식을 다시 설계합니다.</p>
+        <p class="lead rv rv-d2">G마크, 홈택스, K-MILK. 국민이 매일 마주치는 마크를 만든 브랜딩 전문 회사입니다. 공공기관부터 스타트업까지, 로고 제작을 넘어 브랜드가 읽히는 방식을 다시 설계합니다.</p>
         <div class="hero-cta rv rv-d3">
           <a class="btn btn-red" href="#consult">무료 브랜드 진단 받기 <span class="arr">→</span></a>
           <a class="btn btn-ghost" href="#before-after">비포·애프터 보기</a>
         </div>
       </div>
       <aside class="hero-card rv rv-d3" aria-label="브랜드 진단 미리보기">
-        <div class="cap"><span>Brand Diagnosis</span><span id="dcName">ever miracle</span></div>
+        <div class="cap"><span class="ko">진단사례</span><span id="dcName">ever miracle</span></div>
         <div class="pair">
           <figure class="before"><img id="dcB" src="assets/w_ba_em_b.webp" alt="리뉴얼 전 에버미라클 로고" loading="lazy"><figcaption>BEFORE</figcaption></figure>
           <figure class="after"><img id="dcA" src="assets/w_ba_em_a.webp" alt="리뉴얼 후 에버미라클 로고" loading="lazy"><figcaption>AFTER</figcaption></figure>
         </div>
-        <div class="foot"><span id="dcNote">필기체에서, 두 글자로 각인되는 심볼로</span><b>진단 사례</b></div>
+        <div class="foot"><span id="dcNote">필기체에서, 두 글자로 각인되는 심볼로</span></div>
         <div class="dc-dots" id="dcDots" aria-label="진단 사례 전환"></div>
       </aside>
     </div>
@@ -428,9 +432,15 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <figure><img src="assets/w_mq_em.webp" alt="에버미라클 패키지" loading="lazy"></figure>
     <figure><img src="assets/w_mq_sesa_store.webp" alt="세사 매장 사인" loading="lazy"></figure>
     <figure><img src="assets/w_mq_inist_ci.webp" alt="이니스트 CI 적용물" loading="lazy"></figure>
-    <figure><img src="assets/w_mq_goat.webp" alt="흑염소 진액 제품 BI" loading="lazy"></figure>
-    <figure><img src="assets/w_mq_academy.webp" alt="토커스어학원 인테리어 사인" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_lalaola.webp" alt="라라올라 제품 패키지" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_tocus.webp" alt="토커스어학원 인테리어 사인" loading="lazy"></figure>
     <figure><img src="assets/w_mq_sketch.webp" alt="제품 디자인 스케치" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_lguplus.webp" alt="LG U+ Biz 로고 시스템" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_kmilk_splash.webp" alt="K-MILK 국산우유사용인증 마크" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_bokjiro.webp" alt="복지로 배너" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_ydp.webp" alt="영등포구 도시 슬로건" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_ega.webp" alt="이가그룹 명함" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_tget.webp" alt="티겟 로고" loading="lazy"></figure>
     <figure><img src="assets/w_mq_snu.webp" alt="서울대학교 자연과학대학 사인 시스템" loading="lazy"></figure>
     <figure><img src="assets/w_mq_edu_office.webp" alt="서울특별시교육청 엠블럼" loading="lazy"></figure>
     <figure><img src="assets/w_mq_ulsan.webp" alt="울산시립미술관 아이덴티티" loading="lazy"></figure>
@@ -447,9 +457,15 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <figure><img src="assets/w_mq_em.webp" alt="에버미라클 패키지" loading="lazy"></figure>
     <figure><img src="assets/w_mq_sesa_store.webp" alt="세사 매장 사인" loading="lazy"></figure>
     <figure><img src="assets/w_mq_inist_ci.webp" alt="이니스트 CI 적용물" loading="lazy"></figure>
-    <figure><img src="assets/w_mq_goat.webp" alt="흑염소 진액 제품 BI" loading="lazy"></figure>
-    <figure><img src="assets/w_mq_academy.webp" alt="토커스어학원 인테리어 사인" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_lalaola.webp" alt="라라올라 제품 패키지" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_tocus.webp" alt="토커스어학원 인테리어 사인" loading="lazy"></figure>
     <figure><img src="assets/w_mq_sketch.webp" alt="제품 디자인 스케치" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_lguplus.webp" alt="LG U+ Biz 로고 시스템" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_kmilk_splash.webp" alt="K-MILK 국산우유사용인증 마크" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_bokjiro.webp" alt="복지로 배너" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_ydp.webp" alt="영등포구 도시 슬로건" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_ega.webp" alt="이가그룹 명함" loading="lazy"></figure>
+    <figure><img src="assets/w_mq_tget.webp" alt="티겟 로고" loading="lazy"></figure>
   </div>
 </div>
 
@@ -503,7 +519,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         </div>
         <div class="ba-body">
           <span class="cat">제조 · 가전</span>
-          <h3>설명하는 사명에서, 손끝의 감각이 남는 이름으로</h3>
+          <h3>소형가전에서 손끝의 감각이 남는 스마트가전으로</h3>
           <p>ELECTRONICS를 덜어내고 이름만 남겼습니다. 둥근 획과 붉은 톤으로 만지고 싶은 가전이라는 인상을 만들었습니다.</p>
           <div class="result"><b>보국전자</b><span>워드마크 · 제품 · 인쇄물 적용</span></div>
         </div>
@@ -519,7 +535,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         </div>
         <div class="ba-body">
           <span class="cat">협회 · 인증기관</span>
-          <h3>흩어진 소용돌이에서, 인증기관다운 단단한 약자로</h3>
+          <h3>한국능률협회에서 글로벌 인증기관으로</h3>
           <p>네 글자를 세 글자로 줄이고 붉은 원 하나를 남겼습니다. 인증서와 현판에서 먼저 읽히는 형태입니다.</p>
           <div class="result"><b>한국경영인증원</b><span>인증서 · 현판 · 문서 적용</span></div>
         </div>
@@ -535,24 +551,13 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         </div>
         <div class="ba-body">
           <span class="cat">유통 · 리빙</span>
-          <h3>장식적인 세리프에서, 매장에 걸리는 이름으로</h3>
+          <h3>극세사의 이미지에서 품격있는 침구브랜드로</h3>
           <p>점과 부제를 걷어내고 자간을 넓혔습니다. 간판 크기로 확대해도 버티는 굵기를 찾았습니다.</p>
           <div class="result"><b>세사리빙</b><span>매장 사인 · 패키지 적용</span></div>
         </div>
       </article>
     </div>
 
-    <div class="system">
-      <figure class="big rv"><img src="assets/w_sys_sign.webp" alt="문파크 아메리카노 매장 간판" loading="lazy"><figcaption>간판 · 사이니지</figcaption></figure>
-      <figure class="rv rv-d1"><img src="assets/w_sys_card.webp" alt="문파크 아메리카노 명함" loading="lazy"><figcaption>명함 · 인쇄물</figcaption></figure>
-      <div class="system-copy rv rv-d2">
-        <span class="eyebrow">Brand System</span>
-        <h3>로고 하나에서<br>브랜드 전체로</h3>
-        <p>모든 접점에서 기억되는 하나의 브랜드 경험<br>명함, 패키지, 간판부터 웹사이트와 SNS까지. 단순한 로고에 그치지 않고, 고객이 마주치는 모든 접점에서 완벽한 브랜드 가이드를 구축합니다.</p>
-      </div>
-      <figure class="rv rv-d2"><img src="assets/w_sys_pack.webp" alt="더미트 패키지와 쇼핑백" loading="lazy"><figcaption>패키지 · 쇼핑백</figcaption></figure>
-      <figure class="rv rv-d3"><img src="assets/w_sys_bottle.webp" alt="킥스 화장품 용기 라인" loading="lazy"><figcaption>제품 · 라벨</figcaption></figure>
-    </div>
   </div>
 </section>
 
@@ -568,32 +573,26 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     </div>
 
     <div class="public-grid">
-      <div class="public-video rv">
-        <video muted loop playsinline poster="assets/dark_poster.webp" preload="none" aria-hidden="true">
-          <source src="assets/dark_web.mp4" type="video/mp4">
-        </video>
-        <span class="cap">MARK CONSTRUCTION · SINCE 1999</span>
-      </div>
       <!-- 마크 설명 문구는 의뢰인 초안 그대로. 최종 확인 필요 -->
       <ul class="marks rv rv-d1">
-        <li>
-          <div class="mk"><img class="mark-img" src="assets/w_mk_gmark.webp" alt="" loading="lazy"><img class="ctx" src="assets/w_ctx_gmark.webp" alt="경기도지사 인증 G마크 적용 홍보물" loading="lazy"></div>
-          <div><a class="ep" href="#shorts">G MARK · EP.01 ↗</a><h3>경기도지사 인증 G마크</h3><p>G 하나에 Governor, Guaranteed, Good, Green 네 가지 의미. 새싹으로 경기 농업인의 의지를 담았습니다.</p></div>
-          <span class="badge">공식 인증마크</span>
-        </li>
-        <li>
-          <div class="mk no-ctx"><img class="mark-img" src="assets/w_mk_hometax.webp" alt="" loading="lazy"></div>
-          <div><a class="ep" href="#shorts">HOMETAX · EP.02 ↗</a><h3>국세청 홈택스</h3><p>전 국민 누구나가 집에서 쉽게 이용할 수 있는 정책브랜드. 소문자 e와 녹색닷으로 빠르고 편리한 온라인 납세를 표현했습니다.</p></div>
-          <span class="badge">정책브랜드</span>
-        </li>
         <li>
           <div class="mk"><img class="mark-img" src="assets/w_mk_kmilk.webp" alt="" loading="lazy"><img class="ctx" src="assets/w_ctx_kmilk.webp" alt="K-MILK 인증마크가 적용된 우유 패키지" loading="lazy"></div>
           <div><a class="ep" href="#shorts">K-MILK · EP.03 ↗</a><h3>국산우유 인증마크 K-MILK</h3><p>태극기의 곤괘와 감괘에서 출발. 숨은 공간에 한글 '우유'가 담긴 공식 인증마크 디자인입니다.</p></div>
           <span class="badge">공식 인증마크</span>
         </li>
         <li>
+          <div class="mk"><img class="mark-img" src="assets/w_mk_gmark.webp" alt="" loading="lazy"><img class="ctx" src="assets/ctx_produce.jpg" alt="G마크 인증 농산물" loading="lazy"></div>
+          <div><a class="ep" href="#shorts">G MARK · EP.01 ↗</a><h3>경기도지사 인증 G마크</h3><p>G 하나에 Governor, Guaranteed, Good, Green 네 가지 의미. 새싹으로 경기 농업인의 의지를 담았습니다.</p></div>
+          <span class="badge">공식 인증마크</span>
+        </li>
+        <li>
           <div class="mk"><img class="mark-img" src="assets/w_mk_valley.webp" alt="" loading="lazy"><img class="ctx" src="assets/w_ctx_valley.webp" alt="아름다운 계곡 만들기 사업 현장 안내물" loading="lazy"></div>
           <div><span class="ep">GYEONGGI · VALLEY</span><h3>경기도 아름다운 계곡 만들기</h3><p>초록 능선과 푸른 물줄기를 겹쳐, 되살아난 계곡을 하나의 형태에 담았습니다.</p></div>
+          <span class="badge">정책브랜드</span>
+        </li>
+        <li>
+          <div class="mk"><img class="mark-img" src="assets/w_mk_hometax.webp" alt="" loading="lazy"><img class="ctx" src="assets/w_ctx_hometax.webp" alt="홈택스 홍보 현수막" loading="lazy"></div>
+          <div><a class="ep" href="#shorts">HOMETAX · EP.02 ↗</a><h3>국세청 홈택스</h3><p>전 국민 누구나가 집에서 쉽게 이용할 수 있는 정책브랜드. 소문자 e와 녹색닷으로 빠르고 편리한 온라인 납세를 표현했습니다.</p></div>
           <span class="badge">정책브랜드</span>
         </li>
       </ul>
@@ -612,6 +611,23 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         <h3>국민의 공감과 신뢰를 얻는<br>공공브랜드를 만듭니다.</h3>
         <p>한 번 개발되면 쉽게 바꿀 수 없습니다. 오랜기간 수많은 국민과 마주하기에. 그래서 더 엄격하게 진단하고, 더 오래 남을 형태와 시스템으로 개발합니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND SYSTEM ============ -->
+<section class="sec offwhite" id="brand-system">
+  <div class="wrap">
+    <div class="system">
+      <figure class="big rv"><img src="assets/w_sys_sign.webp" alt="문파크 아메리카노 매장 간판" loading="lazy"><figcaption>간판 · 사이니지</figcaption></figure>
+      <figure class="rv rv-d1"><img src="assets/w_sys_card.webp" alt="문파크 아메리카노 명함" loading="lazy"><figcaption>명함 · 인쇄물</figcaption></figure>
+      <div class="system-copy rv rv-d2">
+        <span class="eyebrow">Brand System</span>
+        <h3>로고 하나에서<br>브랜드 전체로</h3>
+        <p>모든 접점에서 기억되는 하나의 브랜드 경험<br>명함, 패키지, 간판부터 웹사이트와 SNS까지. 단순한 로고에 그치지 않고, 고객이 마주치는 모든 접점에서 완벽한 브랜드 가이드를 구축합니다.</p>
+      </div>
+      <figure class="rv rv-d2"><img src="assets/w_sys_pack.webp" alt="더미트 패키지와 쇼핑백" loading="lazy"><figcaption>패키지 · 쇼핑백</figcaption></figure>
+      <figure class="rv rv-d3"><img src="assets/w_sys_bottle.webp" alt="킥스 화장품 용기 라인" loading="lazy"><figcaption>제품 · 라벨</figcaption></figure>
     </div>
   </div>
 </section>
@@ -664,16 +680,16 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <p class="lead rv rv-d2">한 편에 하나의 프로젝트. 왜 이렇게 생겼는지, 어떤 의미가 숨어 있는지 설계 의도를 1분 안에 보여드립니다.</p>
     </div>
     <div class="shorts-grid">
-      <a class="short rv" href="https://www.youtube.com/" target="_blank" rel="noopener"><img src="assets/short_g.webp" alt="G마크 쇼츠 1편" loading="lazy"><span class="ep">EP.01</span><span class="play"></span><div class="t"><h3>G마크, G 하나에 담긴 네 가지 의미</h3><p>경기도 · 농산물 인증</p></div></a>
-      <a class="short rv rv-d1" href="https://www.youtube.com/" target="_blank" rel="noopener"><img src="assets/short_e.webp" alt="홈택스 쇼츠 2편" loading="lazy"><span class="ep">EP.02</span><span class="play"></span><div class="t"><h3>홈택스, 소문자 e가 선택된 이유</h3><p>국세청 · 대국민 공모전</p></div></a>
-      <a class="short rv rv-d2" href="https://www.youtube.com/" target="_blank" rel="noopener"><img src="assets/short_k.webp" alt="K-MILK 쇼츠 3편" loading="lazy"><span class="ep">EP.03</span><span class="play"></span><div class="t"><h3>K-MILK, 괘 사이에 숨은 '우유'</h3><p>한국낙농육우협회 · 인증마크</p></div></a>
-      <a class="short soon rv rv-d3" href="https://www.youtube.com/" target="_blank" rel="noopener"><div class="in"><b>YouTube Channel</b><h3>다음 에피소드는<br>채널에서 먼저</h3></div><span class="go">→</span></a>
+      <a class="short rv" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><img src="assets/short_g.webp" alt="G마크 쇼츠 1편" loading="lazy"><span class="ep">EP.01</span><span class="play"></span><div class="t"><h3>G마크, G 하나에 담긴 네 가지 의미</h3><p>경기도 · 농산물 인증</p></div></a>
+      <a class="short rv rv-d1" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><img src="assets/short_e.webp" alt="홈택스 쇼츠 2편" loading="lazy"><span class="ep">EP.02</span><span class="play"></span><div class="t"><h3>홈택스, 소문자 e가 선택된 이유</h3><p>국세청 · 대국민 공모전</p></div></a>
+      <a class="short rv rv-d2" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><img src="assets/short_k.webp" alt="K-MILK 쇼츠 3편" loading="lazy"><span class="ep">EP.03</span><span class="play"></span><div class="t"><h3>K-MILK, 괘 사이에 숨은 '우유'</h3><p>한국낙농육우협회 · 인증마크</p></div></a>
+      <a class="short soon rv rv-d3" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><div class="in"><b>YouTube Channel</b><h3>다음 에피소드는<br>채널에서 먼저</h3></div><span class="go">→</span></a>
     </div>
     <div class="social rv">
-      <a class="chip" href="https://www.youtube.com/" target="_blank" rel="noopener">▶ YouTube</a>
-      <a class="chip" href="https://www.instagram.com/" target="_blank" rel="noopener">◎ Instagram</a>
-      <a class="chip" href="https://blog.naver.com/" target="_blank" rel="noopener">✎ Blog</a>
-      <a class="chip" href="http://www.logobank.co.kr/" target="_blank" rel="noopener">전체 포트폴리오 → logobank.co.kr</a>
+      <a class="sns" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><svg viewBox="0 0 48 34" aria-hidden="true"><rect width="48" height="34" rx="9" fill="#FF0000"/><path d="M19 10l13 7-13 7z" fill="#fff"/></svg><span>YouTube</span></a>
+      <a class="sns" href="https://www.instagram.com/logobank_branding" target="_blank" rel="noopener"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FFD600"/><stop offset=".5" stop-color="#FF0069"/><stop offset="1" stop-color="#7638FA"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#igg)"/><rect x="8" y="8" width="24" height="24" rx="7" fill="none" stroke="#fff" stroke-width="3"/><circle cx="20" cy="20" r="5.5" fill="none" stroke="#fff" stroke-width="3"/><circle cx="27" cy="13" r="1.8" fill="#fff"/></svg><span>Instagram</span></a>
+      <a class="sns" href="https://blog.naver.com/logobank1" target="_blank" rel="noopener"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#03C75A"/><path d="M11 11h6.4l5.2 7.8V11H29v18h-6.4l-5.2-7.8V29H11z" fill="#fff"/></svg><span>Blog</span></a>
+      <a class="sns" href="http://www.logobank.co.kr" target="_blank" rel="noopener"><img src="assets/logobank_wordmark.png" alt="로고뱅크"><span>전체 포트폴리오</span></a>
     </div>
   </div>
 </section>
@@ -693,7 +709,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         <li>공공기관 · 협회 브랜드 컨설팅</li>
         <li>네이밍 체계 · 브랜드 아키텍처</li>
       </ul>
-      <a class="btn btn-ghost" href="#" style="margin-top:28px" target="_blank" rel="noopener">브랜드인투션 바로가기 <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="http://www.intuition.co.kr" style="margin-top:28px" target="_blank" rel="noopener">브랜드인투션 바로가기 <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -726,7 +742,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
           <div class="field"><label for="f-ind">업종</label>
             <select id="f-ind" name="industry"><option value="">업종을 선택해주세요</option><option>식음료 · F&amp;B</option><option>유통 · 리테일</option><option>IT · 스타트업</option><option>제조 · B2B</option><option>의료 · 전문직</option><option>공공기관 · 협회</option><option>문화 · 예술</option><option>교육</option><option>기타</option></select></div>
           <div class="field"><label for="f-svc">의뢰 내용</label>
-            <select id="f-svc" name="service"><option value="">필요한 서비스를 선택해주세요</option><option>로고 신규 제작</option><option>CI·BI 리뉴얼</option><option>브랜드 가이드라인</option><option>공모전 · 인증마크</option><option>전체 패키지 상담</option></select></div>
+            <select id="f-svc" name="service"><option value="">필요한 서비스를 선택해주세요</option><option>로고 신규 제작</option><option>CI/BI 디자인</option><option>브랜드 리뉴얼</option><option>브랜드 가이드라인</option><option>포장 디자인</option><option>카탈로그</option><option>고급 명함 제작</option><option>기타 디자인</option></select></div>
         </div>
         <div class="row">
           <div class="field"><label for="f-msg">추가 내용 (선택)</label><textarea id="f-msg" name="message" placeholder="현재 브랜드의 고민이나 참고 링크를 적어주세요."></textarea></div>
@@ -843,7 +859,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   (() => {
     const CASES = [
       {b:'assets/w_ba_em_b.webp', a:'assets/w_ba_em_a.webp', name:'ever miracle', brand:'에버미라클', note:'필기체에서, 두 글자로 각인되는 심볼로'},
-      {b:'assets/w_ba_bigfoot_b.webp', a:'assets/w_ba_bigfoot_a.webp', name:'BIGFOOT SOUND', brand:'빅풋사운드', note:'가는 세리프에서, 소리가 보이는 레터링으로'}
+      {b:'assets/w_ba_bigfoot_b.webp', a:'assets/w_ba_bigfoot_a.webp', name:'BIGFOOT SOUND', brand:'빅풋사운드', note:'일반 레터에서 사운드 형태의 워드마크로'}
     ];
     const card = document.querySelector('.hero-card'), B = document.getElementById('dcB'), A = document.getElementById('dcA'),
           N = document.getElementById('dcName'), NT = document.getElementById('dcNote'), D = document.getElementById('dcDots');

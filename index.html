@@ -273,7 +273,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 
 /* ============ SHORTS ============ */
 .shorts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-@media(min-width:900px){.shorts-grid{grid-template-columns:repeat(4,1fr) 2fr;gap:12px;max-width:894px}.short.soon{padding:16px}.short.soon .in h3{font-size:15px}.short.soon .go{font-size:28px}.short .t{padding:40px 10px 10px}.short .t h3{font-size:13px}.short .t p{font-size:11px}.short .play{width:40px;height:40px}}
+@media(min-width:900px){.shorts-row{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end}.shorts-grid{grid-template-columns:repeat(4,1fr);gap:12px;max-width:600px}.short.soon{padding:16px}.short.soon .in h3{font-size:15px}.short.soon .go{font-size:28px}.short .t{padding:40px 10px 10px}.short .t h3{font-size:13px}.short .t p{font-size:11px}.short .play{width:40px;height:40px}}
 .short{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#0D0D0D;color:#fff;display:block}
 .short img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 @media(hover:hover){.short:hover img{transform:scale(1.05)}}
@@ -291,13 +291,15 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .short.soon .in h3{font-size:clamp(17px,1.6vw,24px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:10px}
 .short.soon .go{font-family:var(--font-en);font-weight:800;font-size:40px;line-height:1;align-self:flex-end;transition:transform .35s var(--ease)}
 @media(hover:hover){.short.soon:hover .go{transform:translateX(6px)}}
-.short.store{aspect-ratio:auto;min-height:150px;grid-column:span 2;background:#fff;color:var(--ink);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px 20px;text-align:center;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
-@media(min-width:900px){.short.store{grid-column:auto}}
-.short.store img{height:64px;width:auto}
-.short.store p{font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--ink2)}
-.short.store .cta{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:12px;font-weight:700;color:var(--red)}
-.short.store .cta .arr{transition:transform .35s var(--ease)}
-@media(hover:hover){.short.store:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(0,0,0,.35);border-color:var(--ink)}.short.store:hover .cta .arr{transform:translate(2px,-2px)}}
+.store-card{display:flex;align-items:center;gap:22px;margin-top:14px;padding:24px 28px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--ink);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
+@media(min-width:900px){.store-card{margin-top:0;padding:28px 32px}}
+.store-card img{height:60px;width:auto;flex:none}
+.store-card .tx{display:flex;flex-direction:column;gap:6px}
+.store-card .tx p{font-size:14px;font-weight:600;letter-spacing:-.01em;color:var(--ink2);word-break:keep-all;text-wrap:balance}.store-card .mbr{display:none}
+@media(max-width:899px){.store-card{padding:20px 22px;gap:18px}.store-card img{height:54px}.store-card .mbr{display:inline}}
+.store-card .cta{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--red)}
+.store-card .cta .arr{transition:transform .35s var(--ease)}
+@media(hover:hover){.store-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(0,0,0,.35);border-color:var(--ink)}.store-card:hover .cta .arr{transform:translate(2px,-2px)}}
 .social{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:36px}
 @media(min-width:900px){.social{grid-template-columns:repeat(4,1fr);gap:16px}}
 .sns{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:30px 16px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
@@ -690,12 +692,14 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       </div>
       <p class="lead rv rv-d2">한 편에 하나의 프로젝트. 왜 이렇게 생겼는지, 어떤 의미가 숨어 있는지 설계 의도를 1분 안에 보여드립니다.</p>
     </div>
+    <div class="shorts-row">
     <div class="shorts-grid">
       <a class="short rv" href="https://youtube.com/shorts/IcSQEnb79U8" target="_blank" rel="noopener"><img src="assets/short_01.webp" alt="로고뱅크 쇼츠: 브랜딩은 로고뱅크에서" loading="lazy"><span class="ep">EP.01</span><span class="play"></span><div class="t"><h3>브랜딩은 로고뱅크에서</h3><p>로고뱅크 · 브랜딩</p></div></a>
       <a class="short rv rv-d1" href="https://youtube.com/shorts/9fHTd5I_9Xo" target="_blank" rel="noopener"><img src="assets/short_02.webp" alt="로고뱅크 쇼츠: 컨셉을 디자인 합니다" loading="lazy"><span class="ep">EP.02</span><span class="play"></span><div class="t"><h3>컨셉을 디자인 합니다</h3><p>로고뱅크 · 디자인 프로세스</p></div></a>
       <a class="short rv rv-d2" href="https://youtube.com/shorts/E3fpL_QngRc" target="_blank" rel="noopener"><img src="assets/short_03.webp" alt="로고뱅크 쇼츠: K-MILK 디자인 의미" loading="lazy"><span class="ep">EP.03</span><span class="play"></span><div class="t"><h3>국산우유인증마크 K-MILK 디자인 의미</h3><p>한국낙농육우협회 · 인증마크</p></div></a>
       <a class="short soon rv rv-d3" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><div class="in"><b>YouTube Channel</b><h3>다음 에피소드는<br>채널에서 먼저</h3></div><span class="go">→</span></a>
-      <a class="short store rv rv-d4" href="https://smartstore.naver.com/logobank1" target="_blank" rel="noopener"><img src="assets/design_siljangdeul_logo.png" alt="디자인 실장들" loading="lazy"><p>명함 대소봉투 각종 인쇄물 제작</p><span class="cta">스마트스토어 바로가기 <span class="arr">↗</span></span></a>
+    </div>
+    <a class="store-card rv rv-d4" href="https://smartstore.naver.com/logobank1" target="_blank" rel="noopener"><img src="assets/design_siljangdeul_logo.png" alt="디자인 실장들" loading="lazy"><span class="tx"><p>명함 대소봉투 <br class="mbr">각종 인쇄물 제작</p><span class="cta">스마트스토어 바로가기 <span class="arr">↗</span></span></span></a>
     </div>
     <div class="social rv">
       <a class="sns" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><svg viewBox="0 0 48 34" aria-hidden="true"><rect width="48" height="34" rx="9" fill="#FF0000"/><path d="M19 10l13 7-13 7z" fill="#fff"/></svg><span>YouTube</span></a>

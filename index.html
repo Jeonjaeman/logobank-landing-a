@@ -291,11 +291,14 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .short.soon .in h3{font-size:clamp(17px,1.6vw,24px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:10px}
 .short.soon .go{font-family:var(--font-en);font-weight:800;font-size:40px;line-height:1;align-self:flex-end;transition:transform .35s var(--ease)}
 @media(hover:hover){.short.soon:hover .go{transform:translateX(6px)}}
-.social{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:36px}
-@media(min-width:900px){.social{grid-template-columns:repeat(4,1fr);gap:16px}}
+.social{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:36px}
+.social .sns{grid-column:span 2}.social .sns.brand{grid-column:span 3}
+@media(min-width:900px){.social{grid-template-columns:repeat(5,1fr);gap:16px}.social .sns,.social .sns.brand{grid-column:auto}}
 .sns{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:30px 16px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
-.sns svg{width:56px;height:auto}.sns img{height:26px;width:auto}
-.sns span{font-family:var(--font-en);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--ink2)}
+.sns svg{width:56px;height:auto}.sns img{height:26px;width:auto}.sns.store img{height:46px}
+.sns span{font-family:var(--font-en);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--ink2);text-align:center;line-height:1.5}
+.sns.store span{letter-spacing:.04em;text-wrap:balance}.sns .mbr{display:none}
+@media(max-width:899px){.sns{padding:26px 10px}.sns .mbr{display:inline}}
 @media(hover:hover){.sns:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(0,0,0,.35);border-color:var(--ink)}}
 
 /* ============ BRAND INTUITION (DARK #2) ============ */
@@ -693,7 +696,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <a class="sns" href="https://youtube.com/@thelogobank" target="_blank" rel="noopener"><svg viewBox="0 0 48 34" aria-hidden="true"><rect width="48" height="34" rx="9" fill="#FF0000"/><path d="M19 10l13 7-13 7z" fill="#fff"/></svg><span>YouTube</span></a>
       <a class="sns" href="https://www.instagram.com/logobank_branding" target="_blank" rel="noopener"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FFD600"/><stop offset=".5" stop-color="#FF0069"/><stop offset="1" stop-color="#7638FA"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#igg)"/><rect x="8" y="8" width="24" height="24" rx="7" fill="none" stroke="#fff" stroke-width="3"/><circle cx="20" cy="20" r="5.5" fill="none" stroke="#fff" stroke-width="3"/><circle cx="27" cy="13" r="1.8" fill="#fff"/></svg><span>Instagram</span></a>
       <a class="sns" href="https://blog.naver.com/logobank1" target="_blank" rel="noopener"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#03C75A"/><path d="M11 11h6.4l5.2 7.8V11H29v18h-6.4l-5.2-7.8V29H11z" fill="#fff"/></svg><span>Blog</span></a>
-      <a class="sns" href="http://www.logobank.co.kr" target="_blank" rel="noopener"><img src="assets/logobank_wordmark.png" alt="로고뱅크"><span>전체 포트폴리오</span></a>
+      <a class="sns brand store" href="https://smartstore.naver.com/logobank1" target="_blank" rel="noopener"><img src="assets/design_siljangdeul_logo.png" alt="디자인 실장들"><span>명함 대소봉투 <br class="mbr">각종 인쇄물 제작</span></a>
+      <a class="sns brand" href="works.html"><img src="assets/logobank_wordmark.png" alt="로고뱅크"><span>전체 포트폴리오</span></a>
     </div>
   </div>
 </section>
@@ -832,7 +836,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   }, {threshold: .6});
   document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 
-  // before/after compare
+  // before/after compare
 
   document.querySelectorAll('.cmp').forEach(cmp => {
     const r = cmp.querySelector('input[type=range]');
@@ -930,7 +934,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('on'); }));
   ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('on'); if (ev === 'drop' && e.dataTransfer.files[0]) { fileIn.files = e.dataTransfer.files; fileIn.dispatchEvent(new Event('change')); } }));
 
-  // form (placeholder: 실제 연동은 메일/카카오채널/시트 중 택1)
+  // form: Supabase inquiries 테이블에 접수 (db.js 미설정 시 데모 동작)
   const form = document.getElementById('consultForm'), toast = document.getElementById('toast');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

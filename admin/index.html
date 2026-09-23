@@ -61,6 +61,18 @@ button{font:inherit;cursor:pointer}
 .ad-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .ad-bar .desc{color:var(--mute);font-size:13px}
 .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+/* 사용량 패널 */
+.usage{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px}
+.usage .u{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.usage .u .k{font-size:12px;font-weight:700;color:var(--mute);letter-spacing:.02em}
+.usage .u .v{font-family:var(--font-en);font-size:22px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
+.usage .u .v small{font-family:var(--font-kr);font-size:12px;font-weight:600;color:var(--mute);margin-left:5px;letter-spacing:0}
+.usage .u .bar{height:6px;border-radius:999px;background:var(--bg2);margin-top:10px;overflow:hidden}
+.usage .u .bar i{display:block;height:100%;border-radius:999px;background:var(--ink);transition:width .6s var(--ease)}
+.usage .u.warn .bar i{background:var(--red)}.usage .u.warn .v{color:var(--red)}
+.usage .u .sub{font-size:12px;color:var(--mute);margin-top:8px}
+@media(max-width:1180px){.usage{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.usage{grid-template-columns:repeat(2,1fr)}}
 table.ad{width:100%;border-collapse:collapse;font-size:14px}
 table.ad th{font-family:var(--font-en);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-align:left;padding:14px 14px;border-bottom:1px solid var(--line);white-space:nowrap;background:#FAFAF8}
 table.ad td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -137,6 +149,7 @@ select.status-sel.s-done{color:var(--mute)}
     </div>
   </div>
   <div class="ad-tabs" id="tabs"></div>
+  <div class="usage" id="usage"></div>
   <div class="ad-form" id="form-box"></div>
   <div class="ad-bar">
     <span class="desc" id="desc"></span>
@@ -272,11 +285,43 @@ select.status-sel.s-done{color:var(--mute)}
     document.getElementById("view-admin").style.display = "block";
     document.getElementById("who").textContent = sessionStorage.getItem("lb-admin-email") || "";
     refreshCounts().then(renderTabs);
+    loadUsage();
     load();
   }
   function refreshCounts() {
     return apiGet("inquiries?select=id&status=eq.new").then(function (d) { counts.inquiries = d.length; })
       .catch(function () { counts.inquiries = 0; });
+  }
+
+  /* ---------------- 사용량 (무료 한도 대비) ---------------- */
+  function mb(bytes) { return (bytes / 1048576).toFixed(bytes >= 104857600 ? 0 : 1) + " MB"; }
+  function days(iso) { return iso ? (Date.now() - new Date(iso).getTime()) / 86400000 : null; }
+  function ago(d) { return d == null ? "기록 없음" : (d < 1 ? "오늘" : Math.floor(d) + "일 전"); }
+  function uCard(k, v, unit, pct, sub) {
+    var warn = pct != null && pct >= 80 ? " warn" : "";
+    return '<div class="u' + warn + '"><div class="k">' + esc(k) + '</div>' +
+      '<div class="v">' + esc(v) + (unit ? '<small>' + esc(unit) + '</small>' : "") + '</div>' +
+      (pct == null ? "" : '<div class="bar"><i style="width:' + Math.min(100, Math.max(pct, 1.5)).toFixed(1) + '%"></i></div>') +
+      (sub ? '<div class="sub">' + esc(sub) + '</div>' : "") + '</div>';
+  }
+  function loadUsage() {
+    var box = document.getElementById("usage");
+    return fetch(URL + "/rest/v1/rpc/usage_stats", {
+      method: "POST",
+      headers: { "apikey": KEY, "Authorization": "Bearer " + token, "Content-Type": "application/json" },
+      body: "{}"
+    }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (u) {
+        var dbPct = u.db_bytes / u.db_limit * 100, stPct = u.storage_bytes / u.storage_limit * 100;
+        box.innerHTML =
+          uCard("데이터베이스", mb(u.db_bytes), "/ 500 MB", dbPct, "무료 한도의 " + dbPct.toFixed(1) + "%") +
+          uCard("이미지 저장공간", mb(u.storage_bytes), "/ 1 GB", stPct, u.storage_count + "개 파일 · 한도의 " + stPct.toFixed(1) + "%") +
+          uCard("문의 접수", String(u.inq_total), "건", null, u.inq_new ? "미확인 " + u.inq_new + "건" : (u.inq_last ? "마지막 " + fmt(u.inq_last) : "아직 접수된 문의 없음")) +
+          uCard("등록 현황", u.works_published + " / " + u.works_total, "실적", null, "노출 중인 팝업 " + u.popups_active + "개") +
+          uCard("자동 점검", ago(days(u.last_ping)), "", days(u.last_ping) == null ? 100 : Math.min(days(u.last_ping) / 7 * 100, 100),
+            "무활동 정지 방지 · 2일마다 자동" + (u.last_ping ? " · " + fmt(u.last_ping) : ""));
+      })
+      .catch(function () { box.innerHTML = uCard("사용량", "확인 불가", "", null, "잠시 후 새로고침해주세요"); });
   }
 
   /* ---------------- 탭 ---------------- */

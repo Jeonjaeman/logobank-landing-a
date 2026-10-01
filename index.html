@@ -103,7 +103,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .nav-links a:hover::after{width:100%}
 @media(min-width:960px){.nav-links{display:flex}}
 .nav-cta{font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:6px;padding:8px 0;border-bottom:1.5px solid var(--ink)}
-.nav-cta .arr{transition:transform .35s var(--ease)}
+.nav-cta .arr{color:var(--red);transition:transform .35s var(--ease)}
 .nav-cta:hover .arr{transform:translateX(4px)}
 
 /* ============ HERO ============ */
@@ -382,9 +382,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <a href="#before-after">비포·애프터</a>
       <a href="#public">공공기관 실적</a>
       <a href="#sme">중소기업·스타트업</a>
-      <a href="#shorts">쇼츠</a>
+      <a href="works.html">업종별 실적</a>
     </nav>
-    <a class="nav-cta" href="#consult">진단 신청 <span class="arr">→</span></a>
+    <a class="nav-cta" href="#consult">제작 문의 <span class="arr">→</span></a>
   </div>
 </header>
 
@@ -737,7 +737,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <div class="consult-grid">
       <div class="consult-info">
         <span class="eyebrow rv">Brand Consultation</span>
-        <h2 class="h2 rv rv-d1" style="margin-top:16px">지금 사용중인 로고,<br>전문가에게 먼저<br>확인해보세요.</h2>
+        <h2 class="h2 rv rv-d1" style="margin-top:16px">지금 사용중인 로고 또는<br>당면상황을 전문가와<br>상담해보세요</h2>
         <p class="lead rv rv-d2" style="margin-top:18px">지금 쓰는 로고 파일 하나면 됩니다. 문제점부터 파악하고, 방향을 함께 잡아드립니다.</p>
         <dl class="rv rv-d2">
           <dt>응답</dt><dd>평균 24시간 이내</dd>
@@ -793,12 +793,12 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         <span>Tel. <a href="tel:0222639708">02-2263-9708</a></span>
         <span>Email. <a href="mailto:thebranding@naver.com">thebranding@naver.com</a></span>
       </div>
-      <span class="copy">© 1999-2026 Logobank. All rights reserved. Provided by TengTengSoft</span>
+      <span class="copy">© 1999-2026 Logobank. All rights reserved. provided by <a href="https://tengtengsoft.kr/" target="_blank" rel="noopener noreferrer" style="color:inherit">tengtengsoft</a></span>
     </div>
   </div>
 </footer>
 
-<div class="sticky" id="sticky"><a class="btn btn-red" href="#consult">브랜드 진단 신청</a></div>
+<div class="sticky" id="sticky"><a class="btn btn-red" href="#consult">브랜드 상담 신청</a></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/db.js"></script>

@@ -388,13 +388,13 @@ select.status-sel.s-done{color:var(--mute)}
   function renderInquiries(listBox) {
     if (!rows.length) { listBox.innerHTML = '<div class="empty">접수된 문의가 없습니다.</div>'; return; }
     var t = document.createElement("table"); t.className = "ad";
-    t.innerHTML = "<tr><th>#</th><th>접수</th><th>이름 · 연락처</th><th>회사 / 브랜드</th><th>업종 · 서비스</th><th>내용 · 메모</th><th>로고</th><th>상태</th><th></th></tr>";
+    t.innerHTML = "<tr><th>#</th><th>접수</th><th>이름 · 연락처 · 이메일</th><th>회사 / 브랜드</th><th>업종 · 서비스</th><th>내용 · 메모</th><th>로고</th><th>상태</th><th></th></tr>";
     rows.forEach(function (r) {
       var tr = document.createElement("tr");
       var cells = [];
       cells.push("<td>" + r.id + "</td>");
       cells.push("<td style='white-space:nowrap;color:var(--mute);font-size:12.5px'>" + esc(fmt(r.created_at)) + (r.source ? "<br><span class='pill src'>" + esc(r.source) + "안</span>" : "") + "</td>");
-      cells.push("<td style='white-space:nowrap'><b>" + esc(r.name) + "</b><br><a href='tel:" + esc(String(r.phone).replace(/[^0-9+]/g, "")) + "' style='color:var(--red)'>" + esc(r.phone) + "</a></td>");
+      cells.push("<td style='white-space:nowrap'><b>" + esc(r.name) + "</b><br><a href='tel:" + esc(String(r.phone).replace(/[^0-9+]/g, "")) + "' style='color:var(--red)'>" + esc(r.phone) + "</a>" + (r.email ? "<br><a href='mailto:" + esc(r.email) + "' style='font-size:12.5px;color:var(--ink2)'>" + esc(r.email) + "</a>" : "") + "</td>");
       cells.push("<td>" + esc(r.brand || "-") + "</td>");
       cells.push("<td style='font-size:13px;color:var(--ink2)'>" + esc(r.industry || "-") + "<br>" + esc(r.service || "-") + "</td>");
       tr.innerHTML = cells.join("");

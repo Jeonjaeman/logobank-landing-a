@@ -753,7 +753,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
           <div class="field"><label for="f-name">이름</label><input id="f-name" name="name" type="text" placeholder="홍길동" autocomplete="name" required></div>
           <div class="field"><label for="f-phone">연락처</label><input id="f-phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" required></div>
         </div>
-        <div class="row">
+        <div class="row two">
+          <div class="field"><label for="f-email">이메일 (선택)</label><input id="f-email" name="email" type="email" placeholder="name@company.com" autocomplete="email" inputmode="email"></div>
           <div class="field"><label for="f-brand">회사명 / 브랜드명</label><input id="f-brand" name="brand" type="text" placeholder="회사명 또는 브랜드명" autocomplete="organization"></div>
         </div>
         <div class="row two">
@@ -969,6 +970,14 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       bad.focus(); return;
     }
     req.forEach(f => f.removeAttribute('aria-invalid'));
+    const email = form.email.value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      form.email.setAttribute('aria-invalid', 'true');
+      toast.textContent = '이메일 형식을 확인해주세요.'; toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+      form.email.focus(); return;
+    }
+    form.email.removeAttribute('aria-invalid');
     const sbtn = form.querySelector('button[type=submit]');
     let logo_url = null;
     if (window.LB_DB && LB_DB.ready) {
@@ -980,7 +989,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
           logo_url = await LB_DB.uploadPublic('inquiries/' + Date.now() + '_' + LB_DB.safeName(file.name), file);
         }
         await LB_DB.insert('inquiries', {
-          name: form.name.value.trim(), phone: form.phone.value.trim(),
+          name: form.name.value.trim(), phone: form.phone.value.trim(), email: email || null,
           brand: form.brand.value.trim() || null, industry: form.industry.value || null,
           service: form.service.value || null, message: form.message.value.trim() || null,
           logo_url: logo_url, source: 'A'
@@ -995,6 +1004,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     notifyByEmail({
       '이름': form.name.value.trim(),
       '연락처': form.phone.value.trim(),
+      '이메일': email || '-',
+      ...(email ? { _replyto: email } : {}),
       '회사명': form.brand.value.trim() || '-',
       '업종': form.industry.value || '-',
       '필요서비스': form.service.value || '-',

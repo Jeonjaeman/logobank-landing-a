@@ -1020,8 +1020,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   });
 
   // lazy video: play only when in view; respect reduced motion
+  // 히어로 영상은 소리 없이 천천히 움직이는 배경이라 '애니메이션 줄이기' 설정이어도 재생한다
+  // (Windows 애니메이션 효과 끔·원격 데스크톱에서 이 설정이 켜져 영상이 멈춰 보이던 문제)
   document.querySelectorAll('video').forEach(v => {
-    if (reduce) { v.autoplay = false; v.removeAttribute('autoplay'); v.pause(); return; }
+    if (reduce && !v.closest('.hero')) { v.autoplay = false; v.removeAttribute('autoplay'); v.pause(); return; }
     const vio = new IntersectionObserver((es) => es.forEach(e => { e.isIntersecting ? v.play().catch(()=>{}) : v.pause(); }), {threshold: .2});
     vio.observe(v);
   });
